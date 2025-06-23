@@ -1,0 +1,98 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ===== Theme Token Mapping ===== */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ===== Light Theme ===== */
+:root {
+  --radius: 0.5rem;
+
+  --background: #0d0d0d;
+  --foreground: #f5f5f5;
+
+  --sidebar: #212121;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-accent: #2a2a2a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #3a3a3a;
+  --sidebar-ring: #5c5c5c;
+
+  --primary: #1e90ff;
+  --primary-foreground: #ffffff;
+
+  --muted: #2d2d2d;
+  --muted-foreground: #a1a1a1;
+}
+
+/* ===== Dark Theme Overrides ===== */
+.dark {
+  --background: #121212;
+  --foreground: #e5e5e5;
+
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-accent: #2f2f2f;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #4a4a4a;
+  --sidebar-ring: #666666;
+
+  --primary: #4a90e2;
+  --primary-foreground: #ffffff;
+
+  --muted: #2c2c2c;
+  --muted-foreground: #bfbfbf;
+}
+
+/* ===== Base Styles ===== */
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply bg-background text-foreground overflow-x-hidden;
+    
+  }
+
+  * {
+    @apply border-[color:var(--border)] outline-[color:var(--ring)/0.5];
+  }
+}
+
+/* ===== Utility: Smooth Scroll ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Utility: Hide Scrollbar Cross-Browser ===== */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;            /* Chrome, Safari and Opera */
+}
